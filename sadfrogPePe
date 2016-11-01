@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.6/addons/p5.dom.js"></script>
+    <script>
+        var total = 10;
+        var img;
+        var font;
+        var words = ["WHY ME","WHY NOT YOU?"];
+        var wordcount = 0;
+
+        function preload() {
+            img = loadImage("SadFrog412351.png");
+            font = loadFont("Flowers Kingdom.ttf");
+
+        }
+
+        function setup() {
+            createCanvas(412, 351);
+            textFont(font);
+            frameRate(10);
+        }
+
+        function draw() {
+            background(0);
+            var s = round(412 / total);
+            var t = round(351 / total);
+            for (var j = 0; j < total; j++) {
+                for (var i = 0; i < total; i++) {
+                    image(img, s * i, t * j, s, t);
+                    tint(random(0, 255), random(0, 255), random(0, 255));
+                }
+
+            }
+            fill(random(0, 255), random(0, 255), random(0, 255));
+            textSize(40);
+            text(words[wordcount], 70, 220);
+        }
+
+        function mousePressed() {
+            total = random(1, 10);
+            //text
+            wordcount += 1;
+            if (wordcount == words.length) {
+                wordcount = 0;
+            }
+        }
+    </script>
+</head>
+
+</html>
